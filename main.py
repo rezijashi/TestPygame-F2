@@ -16,6 +16,7 @@ pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(-1)
 
 coin_sound = pygame.mixer.Sound("coin_sound.mp3")
+coin_sound.set_volume(0.5)
 
 
 BACKGROUND_COLOR = (255, 255, 255)
