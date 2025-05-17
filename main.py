@@ -1,8 +1,8 @@
 import pygame
 import random
-from time import sleep
-
 pygame.init()
+pygame.mixer.init()
+
 
 WIDTH = 800
 HEIGHT = 600
@@ -10,6 +10,13 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Test Pygame")
 
 clock = pygame.time.Clock()
+
+pygame.mixer.music.load("background_sound.mp3")
+pygame.mixer.music.set_volume(0.5)
+pygame.mixer.music.play(-1)
+
+coin_sound = pygame.mixer.Sound("coin_sound.mp3")
+
 
 BACKGROUND_COLOR = (255, 255, 255)
 background_img = pygame.image.load("background.jpg")
@@ -100,8 +107,14 @@ while running:
         score += 1
         coin.x = random.randint(50, 700)
         coin.y = random.randint(50, 500)
+        coin_sound.play()
 
-    screen.blit(background_img, (0,0)) #რომელი წერტილიდან დაიწყოს ფოტოს გამოჩენა
+    for wall in walls:
+        if coin.colliderect(wall):
+            coin.x = random.randint(50, 700)
+            coin.y = random.randint(50, 500)
+
+    screen.blit(background_img, (0, 0)) # რომელი წერტილიდან დაიწყოს ფოტოს გამოჩენა
 
     score_text = font.render(f"Score: {score}", True, (0, 0, 0))
     screen.blit(score_text, (620, 10))
