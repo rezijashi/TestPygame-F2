@@ -7,7 +7,7 @@ pygame.mixer.init()
 WIDTH = 800
 HEIGHT = 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Test Pygame")
+pygame.display.set_caption("max payne")
 
 clock = pygame.time.Clock()
 
@@ -39,11 +39,11 @@ walls = [
 ]
 
 #მოგების პლატფორმა
-win_platform = pygame.Rect(700, 500, 90, 90)
+win_platform = pygame.Rect(700, 500, 80, 90)
 
 # ფოტო მოგებისას გამოჩენისთვის
 win_img = pygame.image.load("win_img.png")
-win_img = pygame.transform.scale(win_img, (250, 250))
+win_img = pygame.transform.scale(win_img, (800, 600))
 
 old_x = player.x
 old_y = player.y
@@ -129,7 +129,7 @@ while running:
         pygame.draw.rect(screen, (red, green, blue), wall)
     # თასი ჩნდება მხოლოდ მოგების შემთხვევაში
     if win:
-        screen.blit(win_img, (250, 200))
+        screen.blit(win_img, (0, 0))
     pygame.display.flip()
 
 pygame.quit()
